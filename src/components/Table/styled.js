@@ -12,6 +12,9 @@ export const containerTable = styled.div`
 `;
 
 export const table = styled.div`
+	display:flex ;
+	align-items:center ;
+	justify-content:center ;
 	width: 50vw;
 	height: 50vh ;
 

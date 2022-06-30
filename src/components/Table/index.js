@@ -59,12 +59,12 @@ export default function Table() {
   return (
     <S.containerTable>
       <S.table>
-        {isLoading && rows.length === 0 ? (
+        {isLoading ? (
           <p> carregando</p>
         ) : (
           <DataGrid
-            rows={rows}
-            columns={columns}
+            rows={rows || []}
+            columns={columns || []}
             pageSize={5}
             rowsPerPageOptions={[5]}
             onRowClick={(item) => {
