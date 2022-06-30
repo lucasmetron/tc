@@ -1,0 +1,5 @@
+export const tableTypes = {
+	REQ_DATA_TABLE: '@table/REQ_DATA_TABLE',
+	SUCCESS_DATA_TABLE: '@table/SUCCESS_DATA_TABLE',
+	FAIL_GET_DATA_TABLE: '@table/FAIL_GET_DATA_TABLE'
+};
