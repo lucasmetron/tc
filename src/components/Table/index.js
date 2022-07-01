@@ -7,18 +7,22 @@ import * as S from "./styled";
 import Modal from "../Modal";
 
 export default function Table() {
-
   const dispatch = useDispatch();
-  
-  const {
-    tableData: list,
-    isLoading,
-  } = useSelector((state) => state.table);
+
+  const { tableData: list, isLoading } = useSelector((state) => state.table);
 
   const [rows, setRows] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [itemSelected, setItemSelected] = useState({});
 
+  const columns = [
+    { field: "name", headerName: "Nome", width: 150 },
+    { field: "email", headerName: "Email", width: 150 },
+    { field: "phone", headerName: "Telefone", width: 180 },
+    { field: "adressComplete", headerName: "Endereço Completo", width: 300 },
+    { field: "city", headerName: "Cidade", width: 150 },
+    { field: "companyName", headerName: "Empresa", width: 150 },
+  ];
 
   useEffect(() => {
     dispatch(reqDataTable());
@@ -47,15 +51,6 @@ export default function Table() {
     }
   }, [list]);
 
-  const columns = [
-    { field: "name", headerName: "Nome", width: 150 },
-    { field: "email", headerName: "Email", width: 150 },
-    { field: "phone", headerName: "Telefone", width: 180 },
-    { field: "adressComplete", headerName: "Endereço Completo", width: 300 },
-    { field: "city", headerName: "Cidade", width: 150 },
-    { field: "companyName", headerName: "Empresa", width: 150 },
-  ];
-
   return (
     <S.containerTable>
       <S.table>
@@ -73,12 +68,12 @@ export default function Table() {
             }}
           />
         )}
-
-        <Modal isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
-          <p>O id do usuário é {itemSelected.id} </p>
-          <p> O nome do usuário é {itemSelected.name}</p>
-        </Modal>
       </S.table>
+
+      <Modal isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
+        <p>O id do usuário é {itemSelected.id} </p>
+        <p> O nome do usuário é {itemSelected.name}</p>
+      </Modal>
     </S.containerTable>
   );
 }
